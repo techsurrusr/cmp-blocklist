@@ -2,8 +2,8 @@
 # Coverage: Sweden, Denmark, Norway, Finland, Iceland, Faroe Islands, Greenland
 #           + all major global CMP/GDPR consent platforms
 # Format:   127.0.0.1 <domain>
-# Version:  v1.7 — 2026-04-18
-# Verified: live browser fingerprinting across 20+ Nordic media sites
+# Version:  v1.8 — 2026-04-18
+# Verified: live browser fingerprinting + article render tests across 20+ Nordic media sites
 #
 # SSO WARNING: entries below marked [SSO] also break subscriber login.
 #              Comment them out if you hold an active subscription.
@@ -134,8 +134,10 @@
 127.0.0.1 cmp.nettavisen.no
 
 
-# --- FINLAND: Alma Media (Consentmanager + Adform) ---
-# Iltalehti, Aamulehti, Satakunnan Kansa — live-verified
+# --- FINLAND: Alma Media (SourcePoint + Adform) ---
+# Iltalehti, Aamulehti, Satakunnan Kansa — live-verified 2026-04-18
+# NOTE: Alma Media migrated from Consentmanager to SourcePoint (cdn.privacy-mgmt.com, see above).
+#       Consentmanager entries retained for any remaining Alma titles still on old platform.
 127.0.0.1 cdn.consentmanager.net
 127.0.0.1 delivery.consentmanager.net
 127.0.0.1 js.consentmanager.net
@@ -149,6 +151,7 @@
 # --- FINLAND: Yle public broadcaster (UserReport + Kicker) — live-verified ---
 127.0.0.1 visitanalytics.userreport.com
 127.0.0.1 api.userreport.com
+127.0.0.1 sak.dnt-userreport.com              # Alma Media UserReport endpoint
 127.0.0.1 sitestat.com
 127.0.0.1 cl-eu6.k5a.io
 
@@ -200,6 +203,7 @@
 
 
 # --- Nordic media trackers ---
+127.0.0.1 assets.bonad.io              # Bonad Nordic ad network (Aller/Dagbladet)
 127.0.0.1 recommendations.cxense.com  # Cxense / Piano Analytics (NO origin)
 127.0.0.1 scdn.cxense.com
 127.0.0.1 api.cxense.com
@@ -250,4 +254,4 @@
 127.0.0.1 connect.facebook.net             # Meta Pixel
 127.0.0.1 www.facebook.com
 
-# END — v1.5 — 2026-04-18
+# END — v1.8 — 2026-04-18
