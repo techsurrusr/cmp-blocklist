@@ -1,8 +1,5 @@
-# Pi-hole Subscribed Lists — rpipihole
-**Source:** https://10.46.235.235/admin/groups/lists  
 **Scraped:** 2026-04-18  
 **Total:** 25 lists (25 blocklists)  
-**Fix applied:** Stalkerware Indicators was incorrectly set as an allowlist — corrected to blocklist 2026-04-18.  
 **Last Update column:** checked 2026-04-18 via GitHub API (commit date) for GitHub-hosted lists; via file header comments or HTTP Last-Modified for others.
 
 ---
