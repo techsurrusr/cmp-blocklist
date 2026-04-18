@@ -1,0 +1,200 @@
+# =============================================================================
+# Pi-hole Blocklist: Nordic Media CMP & Paywall Domains
+# Focus: Sweden & Denmark — news, business, sport and TV media
+# Format: 127.0.0.1 <domain>
+# Generated: 2026-04-18  |  v1.0 (verified by live browser fingerprinting)
+# =============================================================================
+# HOW TO USE
+#   Pi-hole Admin > Group Management > Adlists > paste raw file URL, or
+#   copy entries into Settings > Blocklists (one domain per line, no prefix),
+#   then run: pihole -g   to reload gravity.
+#
+# LEGEND
+#   [CMP]     = Consent Management Platform (blocks the consent/cookie dialog)
+#   [PAY]     = Paywall infrastructure (blocks the subscription gate)
+#   [SSO]     = Single Sign-On / identity (blocks login wall — see note below)
+#   [TRK]     = Tracking / analytics tied to consent decision pipeline
+#   [ADS]     = Ad-serving tied to consent outcome
+#
+# SSO WARNING
+#   Entries marked [SSO] will also break subscriber login on affected sites.
+#   Comment them out if you hold an active subscription.
+# =============================================================================
+ 
+ 
+# -----------------------------------------------------------------------------
+# [A] SCHIBSTED SWEDEN — SourcePoint CMP  (accountId: 1047)
+#     Sites confirmed: Aftonbladet, SvD, Omni, Godare, TV.nu, Sportbladet
+# -----------------------------------------------------------------------------
+ 
+# [CMP] Shared Schibsted privacy shim — one entry blocks CMP on ALL SE properties
+127.0.0.1 static.privacy.schibsted.com
+ 
+# [CMP] Per-property SourcePoint endpoints
+127.0.0.1 cmp.aftonbladet.se
+127.0.0.1 cmp.svd.se
+127.0.0.1 cmp.omni.se
+127.0.0.1 cmp.godare.se
+127.0.0.1 cmp.tv.nu
+ 
+# [CMP] Schibsted shared GDPR/TCF bundle
+127.0.0.1 cogwheel.inventory.schibsted.io
+ 
+# [TRK] Schibsted Pulse analytics (participates in consent-gating decisions)
+127.0.0.1 sdkconfig.pulse.schibsted.io
+ 
+# [ADS] Schibsted ad inventory (consent-tied)
+127.0.0.1 ads.inventory.schibsted.io
+ 
+# [SSO] Schibsted identity / paywall login gate  *** see SSO warning above ***
+127.0.0.1 id.aftonbladet.se
+127.0.0.1 login.schibsted.com
+127.0.0.1 session-service.login.schibsted.com
+ 
+ 
+# -----------------------------------------------------------------------------
+# [B] BONNIER NEWS SWEDEN — Didomi CMP  (cmp.bonniernews.se)
+#     Sites confirmed: Dagens Nyheter, Expressen, Sydsvenskan, Dagens industri,
+#                      Privata Affärer, Veckans Affärer (va.se), Allehanda,
+#                      Länstidningen (lt.se), Resumé
+# -----------------------------------------------------------------------------
+ 
+# [CMP] Single shared Didomi instance — blocks entire Bonnier News SE portfolio
+127.0.0.1 cmp.bonniernews.se
+ 
+# [CMP] Didomi global SDK CDN (Expressen, DagensPS, Realtid and other independents)
+127.0.0.1 sdk.privacy-center.org
+127.0.0.1 api.privacy-center.org
+ 
+ 
+# -----------------------------------------------------------------------------
+# [C] NTM GROUP SWEDEN — SourcePoint CMP  (accountId: 1806)
+#     Sites confirmed: NT (Norrköpings Tidningar), Corren, Folkbladet,
+#                      Eskilstuna-Kuriren, Helagotland
+# -----------------------------------------------------------------------------
+ 
+# [CMP] Per-paper SourcePoint endpoints (NTM runs its own SP account, not Schibsted)
+127.0.0.1 consent.nt.se
+127.0.0.1 consent.corren.se
+127.0.0.1 consent.folkbladet.se
+127.0.0.1 consent.ekuriren.se
+127.0.0.1 consent.helagotland.se
+ 
+ 
+# -----------------------------------------------------------------------------
+# [D] STAMPEN MEDIA SWEDEN — Gravito CMP
+#     Sites confirmed: Göteborgs-Posten, TTELA, Bohusläningen
+# -----------------------------------------------------------------------------
+ 
+# [CMP] Gravito CDN — single entry blocks all Stampen properties
+127.0.0.1 cdn.gravito.net
+127.0.0.1 api.gravito.net
+127.0.0.1 cmp.gravito.net
+ 
+ 
+# -----------------------------------------------------------------------------
+# [E] IDG / COMPUTER SWEDEN — SourcePoint CMP  (cdn.privacy-mgmt.com)
+#     Sites confirmed: computersweden.se
+#     Note: cdn.privacy-mgmt.com is SourcePoint's generic CDN — also catches
+#           any other SourcePoint customer not using a custom subdomain
+# -----------------------------------------------------------------------------
+ 
+127.0.0.1 cdn.privacy-mgmt.com
+127.0.0.1 consent.sp-prod.net
+127.0.0.1 sourcepoint.mgr.consensu.org
+ 
+ 
+# -----------------------------------------------------------------------------
+# [F] NY TEKNIK & BREAKIT — InMobi CMP  (formerly Quantcast Choice)
+# -----------------------------------------------------------------------------
+ 
+127.0.0.1 cmp.inmobi.com
+127.0.0.1 quantcast.mgr.consensu.org
+ 
+ 
+# -----------------------------------------------------------------------------
+# [G] HEMNET — Usercentrics CMP
+# -----------------------------------------------------------------------------
+ 
+127.0.0.1 web.cmp.usercentrics.eu
+127.0.0.1 aggregator.service.consent.usercentrics.eu
+127.0.0.1 privacy.usercentrics.eu
+ 
+ 
+# -----------------------------------------------------------------------------
+# [H] FOTBOLLSKANALEN (SE) / TV2 DENMARK — OneTrust CMP
+# -----------------------------------------------------------------------------
+ 
+# [CMP] OneTrust global CDN
+127.0.0.1 cdn.cookielaw.org
+127.0.0.1 optanon.blob.core.windows.net
+127.0.0.1 geolocation.onetrust.com
+ 
+# [CMP] TV2 Denmark custom consent modal (built on top of OneTrust)
+127.0.0.1 scripts.tv2a.dk
+ 
+ 
+# -----------------------------------------------------------------------------
+# [I] DENMARK — Cookiebot CMP
+#     Sites confirmed: Berlingske, Ekstra Bladet, Politiken, Jyllands-Posten,
+#                      DR (Danmarks Radio), Information.dk
+# -----------------------------------------------------------------------------
+ 
+# [CMP] Cookiebot primary loader and SDK CDN
+127.0.0.1 consent.cookiebot.com
+127.0.0.1 consentcdn.cookiebot.com
+ 
+ 
+# -----------------------------------------------------------------------------
+# [J] DENMARK — Piano / TinyPass paywall
+#     Used by: Berlingske Media, JP/Politikens Hus group
+# -----------------------------------------------------------------------------
+ 
+# [PAY] Piano paywall stack
+127.0.0.1 cdn.piano.io
+127.0.0.1 buy.tinypass.com
+127.0.0.1 experience.tinypass.com
+127.0.0.1 api.tinypass.com
+127.0.0.1 tinypass.com
+127.0.0.1 sandbox.tinypass.com
+ 
+ 
+# -----------------------------------------------------------------------------
+# [K] PLACERA (AVANZA) — Cookie Information CMP
+#     Note: Cookie Information is also common across Danish public sector sites
+# -----------------------------------------------------------------------------
+ 
+127.0.0.1 policy.app.cookieinformation.com
+127.0.0.1 cdn.cookieinformation.com
+ 
+ 
+# -----------------------------------------------------------------------------
+# [L] HOCKEYSVERIGE — Tulo Paywall
+#     (Swedish-built paywall, no standard TCF CMP)
+# -----------------------------------------------------------------------------
+ 
+127.0.0.1 payway-cdn.worldoftulo.com
+127.0.0.1 worldoftulo.com
+ 
+ 
+# -----------------------------------------------------------------------------
+# [M] IAB TCF SHARED INFRASTRUCTURE
+#     Used by every TCF v2.x compliant CMP in this list
+# -----------------------------------------------------------------------------
+ 
+127.0.0.1 vendor-list.consensu.org
+127.0.0.1 cmpv2.consensu.org
+ 
+ 
+# -----------------------------------------------------------------------------
+# [N] SUPPLEMENTARY — Tracking & survey tied to consent decision pipeline
+# -----------------------------------------------------------------------------
+ 
+# [TRK] Iterate — survey overlay used in Schibsted paywall flows
+127.0.0.1 platform.iteratehq.com
+ 
+# [ADS] Microsoft/Xandr ad SDK (part of Schibsted consent stack)
+127.0.0.1 adsdk.microsoft.com
+ 
+# [TRK] Relevant Digital / Schibsted header bidding (TV.nu, GP)
+127.0.0.1 schibsted-cdn.relevant-digital.com
