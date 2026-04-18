@@ -2,7 +2,7 @@
 # Coverage: Sweden, Denmark, Norway, Finland, Iceland, Faroe Islands, Greenland
 #           + all major global CMP/GDPR consent platforms
 # Format:   127.0.0.1 <domain>
-# Version:  v1.6 — 2026-04-18
+# Version:  v1.7 — 2026-04-18
 # Verified: live browser fingerprinting across 20+ Nordic media sites
 #
 # SSO WARNING: entries below marked [SSO] also break subscriber login.
@@ -17,23 +17,27 @@
 
 # --- SWEDEN: Schibsted (SourcePoint 1047) ---
 # Aftonbladet, SvD, Omni, Godare, TV.nu, Sportbladet
-127.0.0.1 static.privacy.schibsted.com
-127.0.0.1 cogwheel.inventory.schibsted.io
-127.0.0.1 sdkconfig.pulse.schibsted.io
-127.0.0.1 ads.inventory.schibsted.io
-127.0.0.1 cmp.aftonbladet.se
+#
+# NOT blocked — required for article rendering to work:
+#   static.privacy.schibsted.com  — TCF API orchestrator; article JS waits for
+#                                   this before rendering body content. Block it
+#                                   and articles hang indefinitely. The per-site
+#                                   cmp.* entries below suppress the dialog.
+#   id.aftonbladet.se             — anonymous session resolution; blocking it
+#   session-service.login.schibsted.com  causes articles to fail for all users,
+#                                   not just subscribers.
+#   esm.schibsted.tech            — shared CDN for React + core framework modules.
+#
+127.0.0.1 cogwheel.inventory.schibsted.io   # GDPR vendor list (dialog dependency)
+127.0.0.1 sdkconfig.pulse.schibsted.io      # Pulse analytics config
+127.0.0.1 ads.inventory.schibsted.io        # Ad inventory
+127.0.0.1 cmp.aftonbladet.se               # CMP dialog UI
 127.0.0.1 cmp.svd.se
 127.0.0.1 cmp.omni.se
 127.0.0.1 cmp.godare.se
 127.0.0.1 cmp.tv.nu
-127.0.0.1 id.aftonbladet.se          # [SSO]
-127.0.0.1 login.schibsted.com        # [SSO]
-127.0.0.1 session-service.login.schibsted.com  # [SSO]
-127.0.0.1 platform.iteratehq.com
-# esm.schibsted.tech — NOT blocked: shared CDN that serves React, React DOM and
-#   other core framework modules alongside Sentry. Blocking it breaks Aftonbladet
-#   and other Schibsted sites entirely. Use uBlock Origin to target Sentry only:
-#   aftonbladet.se##+js(no-fetch-if, sentry)
+127.0.0.1 login.schibsted.com              # [SSO] breaks subscriber login
+127.0.0.1 platform.iteratehq.com           # Iterate survey overlay
 
 # --- SWEDEN: Bonnier News (Didomi) ---
 # DN, Expressen, Sydsvenskan, DI, Privata Affärer, VA, Allehanda, LT, Resumé
