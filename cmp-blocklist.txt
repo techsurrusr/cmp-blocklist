@@ -2,7 +2,7 @@
 # Coverage: Sweden, Denmark, Norway, Finland, Iceland, Faroe Islands, Greenland
 #           + all major global CMP/GDPR consent platforms
 # Format:   127.0.0.1 <domain>
-# Version:  v1.5 — 2026-04-18
+# Version:  v1.6 — 2026-04-18
 # Verified: live browser fingerprinting across 20+ Nordic media sites
 #
 # SSO WARNING: entries below marked [SSO] also break subscriber login.
@@ -29,8 +29,11 @@
 127.0.0.1 id.aftonbladet.se          # [SSO]
 127.0.0.1 login.schibsted.com        # [SSO]
 127.0.0.1 session-service.login.schibsted.com  # [SSO]
-127.0.0.1 esm.schibsted.tech
 127.0.0.1 platform.iteratehq.com
+# esm.schibsted.tech — NOT blocked: shared CDN that serves React, React DOM and
+#   other core framework modules alongside Sentry. Blocking it breaks Aftonbladet
+#   and other Schibsted sites entirely. Use uBlock Origin to target Sentry only:
+#   aftonbladet.se##+js(no-fetch-if, sentry)
 
 # --- SWEDEN: Bonnier News (Didomi) ---
 # DN, Expressen, Sydsvenskan, DI, Privata Affärer, VA, Allehanda, LT, Resumé
