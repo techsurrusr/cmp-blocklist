@@ -14,14 +14,14 @@
 | 5 | Dan Pollock's hosts (someonewhocares.org) | https://someonewhocares.org/hosts/hosts | 2026-04-17 |
 | 6 | Dandelion Sprout's Anti-Malware List | https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareHosts.txt | 2026-04-17 |
 | 7 | First-Party Trackers | https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt | 2026-04-15 |
-| 8 | hagezi Encrypted DNS/VPN/Proxy Bypass | https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/doh-vpn-proxy-bypass.txt | 2026-10-11 |
+| 8 | hagezi Encrypted DNS/VPN/Proxy Bypass | https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/doh-vpn-proxy-bypass.txt | 2026-10-11 |
 | 9 | hagezi Fake (scam/counterfeit sites) | https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/fake.txt | 2026-04-18 |
-| 10 | hagezi Native Apple | https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/native.apple.txt | 2026-04-18 |
-| 11 | hagezi Native Samsung | https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/native.samsung.txt | 2026-04-18 |
-| 12 | hagezi Native Win & Office | https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/native.winoffice.txt | 2026-04-18 |
-| 13 | hagezi Native Xiaomi | https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/native.xiaomi.txt | 2026-04-18 |
-| 14 | hagezi Threat Intelligence Feeds (TIF) | https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/tif.txt | 2026-04-18 |
-| 15 | hagezi's Multi PRO | https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/pro.txt | 2026-04-18 |
+| 10 | hagezi Native Apple | https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.apple.txt | 2026-04-18 |
+| 11 | hagezi Native Samsung | https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.samsung.txt | 2026-04-18 |
+| 12 | hagezi Native Win & Office | https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.winoffice.txt | 2026-04-18 |
+| 13 | hagezi Native Xiaomi | https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.xiaomi.txt | 2026-04-18 |
+| 14 | hagezi Threat Intelligence Feeds (TIF) | https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.txt | 2026-04-18 |
+| 15 | hagezi's Multi PRO | https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt | 2026-04-18 |
 | 16 | KADhosts | https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt | 2026-04-18 |
 | 17 | Malware Domain Blocklist | https://urlhaus.abuse.ch/downloads/hostfile/ | 2026-04-18 |
 | 18 | OISD Big | https://big.oisd.nl | 2026-04-18 |
