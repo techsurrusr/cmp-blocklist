@@ -2,17 +2,22 @@
 # Coverage: Sweden, Denmark, Norway, Finland, Iceland, Faroe Islands, Greenland
 #           + all major global CMP/GDPR consent platforms
 # Format:   127.0.0.1 <domain>
-# Version:  v1.8 — 2026-04-18
+# Version:  v1.9 — 2026-10-11
 # Verified: live browser fingerprinting + article render tests across 20+ Nordic media sites
+#
+# Changelog v1.9 (2026-10-11):
+#   - Moved 4 uBlock Origin cosmetic rules to cmp-blocklist-ublock.txt (cosmetic
+#     filters are not usable by Pi-hole / AdGuard Home).
+#   - Disabled 3 non-functional/over-broad entries (commented, with reasons inline):
+#     www.facebook.com, o1.ingest.sentry.io, sitestat.com.
+#   - Added Google Funding Choices CMP, Didomi didomi.io endpoints, Quantcast Choice.
 #
 # SSO WARNING: entries below marked [SSO] also break subscriber login.
 #              Comment them out if you hold an active subscription.
 #
-# uBlock Origin rules for Aller Media SE self-hosted Didomi (Pi-hole can't block):
-#   hant.se##script[src*="/common/js/cmp/"]
-#   elle.se##script[src*="/common/js/cmp/"]
-#   allas.se##script[src*="/common/js/cmp/"]
-#   svenskdam.se##script[src*="/common/js/cmp/"]
+# uBlock Origin cosmetic rules for Aller Media SE self-hosted Didomi have moved
+# to cmp-blocklist-ublock.txt (Pi-hole / AdGuard Home can't use cosmetic filters).
+# DNS users: those sites' Didomi CMP is already covered via *.privacy-center.org below.
 
 
 # --- SWEDEN: Schibsted (SourcePoint 1047) ---
@@ -69,6 +74,8 @@
 # --- SWEDEN: Ny Teknik, Breakit (InMobi / Quantcast Choice) ---
 127.0.0.1 cmp.inmobi.com
 127.0.0.1 quantcast.mgr.consensu.org
+127.0.0.1 secure.quantserve.com            # NEW v1.9 — Quantcast Choice
+127.0.0.1 rules.quantcount.com             # NEW v1.9 — Quantcast Choice
 
 # --- SWEDEN: Hemnet (Usercentrics) ---
 127.0.0.1 web.cmp.usercentrics.eu
@@ -152,7 +159,7 @@
 127.0.0.1 visitanalytics.userreport.com
 127.0.0.1 api.userreport.com
 127.0.0.1 sak.dnt-userreport.com              # Alma Media UserReport endpoint
-127.0.0.1 sitestat.com
+# 127.0.0.1 sitestat.com   # disabled v1.9: apex is a no-op in exact-match DNS; Nielsen Sitestat serves from <cc>.sitestat.com (real Nielsen endpoints are the imrworldwide.com subs below)
 127.0.0.1 cl-eu6.k5a.io
 
 
@@ -169,11 +176,9 @@
 
 # Faroe Islands (KVF) and Greenland (KNR): fully self-hosted, no entries needed.
 
-
 # --- IAB TCF shared infrastructure ---
 127.0.0.1 vendor-list.consensu.org
 127.0.0.1 cmpv2.consensu.org
-
 
 # --- Global CMP vendors (not already listed above) ---
 127.0.0.1 cmp.uol.io                  # Usercentrics variant
@@ -200,7 +205,9 @@
 127.0.0.1 c.betrad.com
 127.0.0.1 sdkupdates.evidon.com
 127.0.0.1 cdn.cassieapp.com           # Cassie / Syrenis
-
+127.0.0.1 fundingchoicesmessages.google.com   # NEW v1.9 — Google Funding Choices CMP
+127.0.0.1 api.didomi.io               # NEW v1.9 — Didomi (also serves from didomi.io)
+127.0.0.1 sdk.didomi.io               # NEW v1.9 — Didomi
 
 # --- Nordic media trackers ---
 127.0.0.1 assets.bonad.io              # Bonad Nordic ad network (Aller/Dagbladet)
@@ -219,7 +226,6 @@
 127.0.0.1 secure-no.imrworldwide.com
 127.0.0.1 tag.nielsen.com             # Nielsen
 127.0.0.1 secure-au.imrworldwide.com
-
 
 # --- Ad networks (WARNING: breaks ad-funded layouts) ---
 127.0.0.1 securepubads.g.doubleclick.net   # Google Ad Manager
@@ -245,13 +251,13 @@
 127.0.0.1 cat.nl.eu.criteo.com
 127.0.0.1 a.teads.tv                        # Teads
 127.0.0.1 cdn2.teads.tv
-127.0.0.1 o1.ingest.sentry.io              # Sentry (session replay)
+# 127.0.0.1 o1.ingest.sentry.io   # disabled v1.9: matches only Sentry org #1; publishers use per-org o<ID>.ingest.sentry.io, not reachable via exact-match DNS
 127.0.0.1 c.clarity.ms                     # Microsoft Clarity
 127.0.0.1 z.clarity.ms
 127.0.0.1 static.hotjar.com                # Hotjar
 127.0.0.1 vars.hotjar.com
 127.0.0.1 insights.hotjar.com
 127.0.0.1 connect.facebook.net             # Meta Pixel
-127.0.0.1 www.facebook.com
+# 127.0.0.1 www.facebook.com   # disabled v1.9: blocks ALL of Facebook, not just the pixel; connect.facebook.net above already blocks the Meta Pixel loader
 
-# END — v1.8 — 2026-04-18
+# END — v1.9 — 2026-10-11
