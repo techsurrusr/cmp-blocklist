@@ -1,0 +1,11 @@
+# cmp-blocklist — uBlock Origin companion (cosmetic rules)
+# These are uBlock Origin cosmetic filters; Pi-hole / AdGuard Home ignore them.
+# For DNS users, the Aller Media (SE) Didomi CMP is already blocked via
+# *.privacy-center.org in the main list, so these are only needed in uBO.
+# Add to uBO:  Settings > Filter lists > Import.
+# Version: v1.9 — 2026-10-11
+
+hant.se##script[src*="/common/js/cmp/"]
+elle.se##script[src*="/common/js/cmp/"]
+allas.se##script[src*="/common/js/cmp/"]
+svenskdam.se##script[src*="/common/js/cmp/"]
